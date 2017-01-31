@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ORBIS">
+      <Configuration>Debug</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -8,6 +12,10 @@
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="NO-JIT-Debug|ORBIS">
+      <Configuration>NO-JIT-Debug</Configuration>
+      <Platform>ORBIS</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="NO-JIT-Debug|Win32">
       <Configuration>NO-JIT-Debug</Configuration>
@@ -17,6 +25,10 @@
       <Configuration>NO-JIT-Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="NO-JIT-Release|ORBIS">
+      <Configuration>NO-JIT-Release</Configuration>
+      <Platform>ORBIS</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="NO-JIT-Release|Win32">
       <Configuration>NO-JIT-Release</Configuration>
       <Platform>Win32</Platform>
@@ -24,6 +36,10 @@
     <ProjectConfiguration Include="NO-JIT-Release|x64">
       <Configuration>NO-JIT-Release</Configuration>
       <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ORBIS">
+      <Configuration>Release</Configuration>
+      <Platform>ORBIS</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -38,10 +54,14 @@
     <ClCompile Include="..\mono\metadata\appdomain.c" />
     <ClCompile Include="..\mono\metadata\assembly.c" />
     <ClCompile Include="..\mono\metadata\attach.c" />
-    <ClCompile Include="..\mono\metadata\boehm-gc.c" />
+    <ClCompile Include="..\mono\metadata\boehm-gc.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\mono\metadata\class.c" />
     <ClCompile Include="..\mono\metadata\cominterop.c" />
-    <ClCompile Include="..\mono\metadata\console-win32.c" />
+    <ClCompile Include="..\mono\metadata\console-win32.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\mono\metadata\coree.c" />
     <ClCompile Include="..\mono\metadata\custom-attrs.c" />
     <ClCompile Include="..\mono\metadata\debug-helpers.c" />
@@ -93,7 +113,9 @@
     <ClCompile Include="..\mono\metadata\runtime.c" />
     <ClCompile Include="..\mono\metadata\security-core-clr.c" />
     <ClCompile Include="..\mono\metadata\security-manager.c" />
-    <ClCompile Include="..\mono\metadata\mono-security.c" />
+    <ClCompile Include="..\mono\metadata\mono-security.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\mono\metadata\seq-points-data.c" />
     <ClCompile Include="..\mono\metadata\sgen-mono.c" />
     <ClCompile Include="..\mono\metadata\sgen-os-coop.c" />
@@ -108,9 +130,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|ORBIS'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\mono\metadata\sgen-os-posix.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -118,9 +144,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|ORBIS'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\mono\metadata\sgen-os-win32.c" />
     <ClCompile Include="..\mono\metadata\sgen-tarjan-bridge.c" />
@@ -252,7 +282,19 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
@@ -276,7 +318,19 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|ORBIS'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
@@ -297,7 +351,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="mono.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="mono.props" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="mono.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="mono.props" />
   </ImportGroup>
@@ -313,7 +375,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="mono.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="mono.props" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="mono.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|ORBIS'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="mono.props" />
   </ImportGroup>
@@ -333,7 +403,17 @@
     <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
+    <OutDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\</OutDir>
+    <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|x64'">
+    <OutDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\</OutDir>
+    <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)-il2cpp</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">
     <OutDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\</OutDir>
     <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)-il2cpp</TargetName>
@@ -353,7 +433,17 @@
     <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
+    <OutDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\</OutDir>
+    <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)</TargetName>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|x64'">
+    <OutDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\</OutDir>
+    <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)-il2cpp</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|ORBIS'">
     <OutDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\lib\$(Configuration)\</OutDir>
     <IntDir>$(MONO_BUILD_DIR_PREFIX)$(Platform)\obj\$(ProjectName)$(MONO_TARGET_SUFFIX)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)$(MONO_TARGET_SUFFIX)-il2cpp</TargetName>
@@ -409,6 +499,23 @@
     </Link>
     <Lib />
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;WIN32_LEAN_AND_MEAN;$(GC_DEFINES);_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MONO_DIR);$(MONO_INCLUDE_DIR);$(LIBGC_CPPFLAGS_INCLUDE);$(GLIB_CFLAGS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>
@@ -416,6 +523,23 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>IL2CPP_ON_MONO=1;DISABLE_JIT=1;WIN32;WIN32_LEAN_AND_MEAN;$(GC_DEFINES);_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MONO_DIR);$(MONO_INCLUDE_DIR);$(LIBGC_CPPFLAGS_INCLUDE);$(GLIB_CFLAGS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Debug|ORBIS'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>IL2CPP_ON_MONO=1;DISABLE_JIT=1;$(GC_DEFINES);_DEBUG;_LIB;SN_TARGET_ORBIS;PLATFORM_UNITY</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(MONO_DIR);$(MONO_INCLUDE_DIR);$(LIBGC_CPPFLAGS_INCLUDE);$(GLIB_CFLAGS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
@@ -486,7 +610,47 @@
     </Link>
     <Lib />
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;WIN32_LEAN_AND_MEAN;$(GC_DEFINES);NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MONO_DIR);$(MONO_INCLUDE_DIR);$(LIBGC_CPPFLAGS_INCLUDE);$(GLIB_CFLAGS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>IL2CPP_ON_MONO=1;DISABLE_JIT=1;WIN32;WIN32_LEAN_AND_MEAN;$(GC_DEFINES);NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(MONO_DIR);$(MONO_INCLUDE_DIR);$(LIBGC_CPPFLAGS_INCLUDE);$(GLIB_CFLAGS_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(IntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='NO-JIT-Release|ORBIS'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>

@@ -88,6 +88,9 @@
     <ClCompile Include="..\eglib\src\gutf8.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\eglib\src\gmisc-unity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\eglib\src\glib.h">

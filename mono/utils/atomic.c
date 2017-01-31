@@ -584,3 +584,125 @@ InterlockedCompareExchange64(volatile gint64 *dest, gint64 exch, gint64 comp)
 #endif
 
 #endif
+
+#if defined (PLATFORM_UNITY)
+
+#include "D:\il2cpp\libil2cpp\os\Atomic.h"
+
+// these should be inline
+
+gint32 InterlockedCompareExchange(volatile gint32 *dest, gint32 exch, gint32 comp)
+{
+	return il2cpp_os_Atomic_CompareExchange(dest, exch, comp);
+}
+gint64 InterlockedCompareExchange64(volatile gint64 *dest, gint64 exch, gint64 comp)
+{
+	return il2cpp_os_Atomic_CompareExchange64(dest, exch, comp);
+}
+gpointer InterlockedCompareExchangePointer(volatile gpointer *dest, gpointer exch, gpointer comp)
+{
+	return il2cpp_os_Atomic_CompareExchangePointer(dest, exch, comp);
+}
+gint32 InterlockedAdd(volatile gint32 *dest, gint32 add)
+{
+	return il2cpp_os_Atomic_Add(dest, add);
+}
+gint64 InterlockedAdd64(volatile gint64 *dest, gint64 add)
+{
+	return il2cpp_os_Atomic_Add64(dest, add);
+}
+gint32 InterlockedIncrement(volatile gint32 *dest)
+{
+	return il2cpp_os_Atomic_Increment(dest);
+}
+gint64 InterlockedIncrement64(volatile gint64 *dest)
+{
+	return il2cpp_os_Atomic_Increment64(dest);
+}
+gint32 InterlockedDecrement(volatile gint32 *dest)
+{
+	return il2cpp_os_Atomic_Decrement(dest);
+}
+gint64 InterlockedDecrement64(volatile gint64 *dest)
+{
+	return il2cpp_os_Atomic_Decrement64(dest);
+}
+gint32 InterlockedExchange(volatile gint32 *dest, gint32 exch)
+{
+	return il2cpp_os_Atomic_Exchange(dest, exch);
+}
+gint64 InterlockedExchange64(volatile gint64 *dest, gint64 exch)
+{
+	return il2cpp_os_Atomic_Exchange64(dest, exch);
+}
+gpointer InterlockedExchangePointer(volatile gpointer *dest, gpointer exch)
+{
+	return il2cpp_os_Atomic_ExchangePointer(dest, exch);
+}
+gint32 InterlockedExchangeAdd(volatile gint32 *dest, gint32 add)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	return 0;
+//	return il2cpp_os_Atomic_ExchangeAdd(dest, add);
+}
+gint64 InterlockedExchangeAdd64(volatile gint64 *dest, gint64 add)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	return 0;
+//	return il2cpp_os_Atomic_ExchangeAdd64(dest, add);
+}
+gint8 InterlockedRead8(volatile gint8 *src)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	return 0;
+//	return il2cpp_os_Atomic_Read8(src);
+}
+gint16 InterlockedRead16(volatile gint16 *src)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	return 0;
+//	return il2cpp_os_Atomic_Read16(src);
+}
+gint32 InterlockedRead(volatile gint32 *src)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	return 0;
+//	return il2cpp_os_Atomic_Read(src);
+}
+gint64 InterlockedRead64(volatile gint64 *src)
+{
+	return il2cpp_os_Atomic_Read64(src);
+}
+gpointer InterlockedReadPointer(volatile gpointer *src)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	return 0;
+//	return il2cpp_os_Atomic_ReadPointer(src);
+}
+void InterlockedWrite8(volatile gint8 *dst, gint8 val)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+//	il2cpp_os_Atomic_Write8(dst, val);
+}
+void InterlockedWrite16(volatile gint16 *dst, gint16 val)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	//	il2cpp_os_Atomic_Write16(dst, val);
+}
+void InterlockedWrite(volatile gint32 *dst, gint32 val)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	//	il2cpp_os_Atomic_Write(dst, val);
+}
+void InterlockedWrite64(volatile gint64 *dst, gint64 val)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	//	il2cpp_os_Atomic_Write64(dst, val);
+}
+void InterlockedWritePointer(volatile gpointer *dst, gpointer val)
+{
+	g_assertion_message("We need to implement this method on the libil2cpp OS API.");
+	//	il2cpp_os_Atomic_WritePointer(dst, val);
+}
+
+#endif

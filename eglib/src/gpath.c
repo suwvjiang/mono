@@ -250,11 +250,13 @@ g_find_program_in_path (const gchar *program)
 		
 		x = NULL;
 		probe_path = g_build_path (G_DIR_SEPARATOR_S, l, program, NULL);
+#if defined(X_OK)
 		if (access (probe_path, X_OK) == 0){ /* FIXME: on windows this is just a read permissions test */
 			g_free (curdir);
 			g_free (p);
 			return probe_path;
 		}
+#endif
 		g_free (probe_path);
 
 #ifdef G_OS_WIN32

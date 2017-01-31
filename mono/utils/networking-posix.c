@@ -35,8 +35,10 @@ get_address_from_sockaddr (struct sockaddr *sa)
 	switch (sa->sa_family) {
 	case AF_INET:
 		return &((struct sockaddr_in*)sa)->sin_addr;
+#if defined(PLATFORM_UNITY_SUPPORTS_IPV6)
 	case AF_INET6:
 		return &((struct sockaddr_in6*)sa)->sin6_addr;
+#endif
 	}
 	return NULL;
 }

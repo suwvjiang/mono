@@ -1,11 +1,24 @@
 @ECHO off
 
+SETLOCAL
+
+IF not "%1"=="" (
+    IF not "%2"=="" (
+        SET WIN_CONFIG_H=%1
+        SET EGLIB_WIN_CONFIG_H=%2
+        SET ARGS_USED=1
+    )
+)
+
+IF "%ARGS_USED%"=="" (
+    SET WIN_CONFIG_H=..\winconfig.h
+    SET EGLIB_WIN_CONFIG_H=..\eglib\winconfig.h
+)
+
 SET CONFIG_H=..\config.h
 SET EGLIB_CONFIG_H=..\eglib\config.h
 SET CYG_CONFIG_H=..\cygconfig.h
 SET EGLIB_CYG_CONFIG_H=..\eglib\cygconfig.h
-SET WIN_CONFIG_H=..\winconfig.h
-SET EGLIB_WIN_CONFIG_H=..\eglib\winconfig.h
 SET CONFIGURE_AC=..\configure.ac
 SET VERSION_H=..\mono\mini\version.h
 

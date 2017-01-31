@@ -426,6 +426,11 @@ static inline void InterlockedWrite64(volatile gint64 *dst, gint64 val)
 	InterlockedExchange64 (dst, val);
 }
 
+#elif defined(PLATFORM_UNITY)
+
+// Should be #include <atomic-unity.h>
+gint32 InterlockedCompareExchange(volatile gint32 *dest, gint32 exch, gint32 comp);
+
 #else
 
 #define WAPI_NO_ATOMIC_ASM
