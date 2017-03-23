@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <ClCompile Include="..\eglib\src\garray.c" />
+        <ClCompile Include="..\eglib\src\gbytearray.c" />
+        <ClCompile Include="..\eglib\src\gerror.c" />
+        <ClCompile Include="..\eglib\src\gfile-posix.c" />
+        <ClCompile Include="..\eglib\src\gfile.c" />
+        <ClCompile Include="..\eglib\src\ghashtable.c" />
+        <ClCompile Include="..\eglib\src\giconv.c" />
+        <ClCompile Include="..\eglib\src\glist.c" />
+        <ClCompile Include="..\eglib\src\gmarkup.c" />
+        <ClCompile Include="..\eglib\src\gmem.c" />
+        <ClCompile Include="..\eglib\src\gmisc-unity.c" />
+        <ClCompile Include="..\eglib\src\goutput.c" />
+        <ClCompile Include="..\eglib\src\gpattern.c" />
+        <ClCompile Include="..\eglib\src\gptrarray.c" />
+        <ClCompile Include="..\eglib\src\gqsort.c" />
+        <ClCompile Include="..\eglib\src\gqueue.c" />
+        <ClCompile Include="..\eglib\src\gshell.c" />
+        <ClCompile Include="..\eglib\src\gslist.c" />
+        <ClCompile Include="..\eglib\src\gspawn.c" />
+        <ClCompile Include="..\eglib\src\gstr.c" />
+        <ClCompile Include="..\eglib\src\gstring.c" />
+        <ClCompile Include="..\eglib\src\gunicode.c" />
+        <ClCompile Include="..\eglib\src\gutf8.c" />
+      </ItemGroup>
+      <ItemGroup>
+        <ClInclude Include="..\eglib\src\glib.h" />
+        <ClInclude Include="..\eglib\src\gmodule.h" />
+        <ClInclude Include="..\eglib\src\sort.frag.h" />
+      </ItemGroup>
+</Project>
