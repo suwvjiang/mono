@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="UserMacros">
     <!-- Change this to custom build tree location to enable out of source tree builds, example c:/mono-build/ -->
@@ -17,7 +17,8 @@
     <MONO_USE_STATIC_LIBMONO>false</MONO_USE_STATIC_LIBMONO>
   </PropertyGroup>
   <PropertyGroup Label="MonoDirectories">
-    <top_srcdir>$(MSBuildProjectDirectory)/..</top_srcdir>
+    <MonoSourceLocation Condition="'$(MonoSourceLocation)' == '' ">..</MonoSourceLocation>
+    <top_srcdir>$(MSBuildProjectDirectory)/$(MonoSourceLocation)</top_srcdir>
     <MONO_DIR>$(top_srcdir)</MONO_DIR>
     <MONO_INCLUDE_DIR>$(MONO_DIR)/mono</MONO_INCLUDE_DIR>
     <MONO_EGLIB_INCLUDE_DIR>$(MONO_DIR)/eglib;$(MONO_DIR)/eglib/include;$(MONO_DIR)/eglib/test</MONO_EGLIB_INCLUDE_DIR>
