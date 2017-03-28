@@ -8043,7 +8043,11 @@ ves_icall_Microsoft_Win32_NativeMethods_CloseProcess (gpointer handle)
 {
 #if defined(TARGET_WIN32) || defined(HOST_WIN32)
 	return CloseHandle (handle);
-#else
+
+#elif defined (PLATFORM_UNITY)
+    #include "os\NativeMethods.h"
+	return il2cpp_os_NativeMethods_CloseProcess(handle);
+#else 
 	return CloseProcess (handle);
 #endif
 }
