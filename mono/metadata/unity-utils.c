@@ -1,4 +1,4 @@
-﻿#include <config.h>
+#include <config.h>
 #include <mono/utils/mono-publib.h>
 #include <mono/metadata/unity-utils.h>
 #include <stdio.h>
@@ -596,7 +596,7 @@ guint64 mono_unity_type_get_hash(MonoType *type, gboolean inflate)
     GList *hashes = monoeg_g_list_alloc();
 
     get_type_hashes(type, hashes, inflate);
-    
+
     guint64 hash = 0;
 
     g_list_first(hashes);
@@ -1020,6 +1020,23 @@ MONO_API void
 mono_unity_install_memory_callbacks (MonoAllocatorVTable* callbacks)
 {
 	mono_set_allocator_vtable (callbacks);
+}
+
+static char* data_dir = NULL;
+MONO_API void
+mono_unity_set_data_dir(const char* dir)
+{
+    if (data_dir)
+        g_free(data_dir);
+
+    data_dir = g_new(char*, strlen(dir) + 1);
+    strcpy(data_dir, dir);
+}
+
+MONO_API char*
+mono_unity_get_data_dir()
+{
+    return data_dir;
 }
 
 MONO_API gpointer

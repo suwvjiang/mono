@@ -1,4 +1,4 @@
-﻿#ifndef __UNITY_MONO_UTILS_H
+#ifndef __UNITY_MONO_UTILS_H
 #define __UNITY_MONO_UTILS_H
 
 #include <glib.h>
@@ -57,7 +57,7 @@ MonoObject* mono_unity_object_compare_exchange(MonoObject **location, MonoObject
 MonoObject* mono_unity_object_exchange(MonoObject **location, MonoObject *value);
 gboolean mono_unity_object_check_box_cast(MonoObject *obj, MonoClass *klass);
 
-//class 
+//class
 const char* mono_unity_class_get_image_name(MonoClass* klass);
 MonoClass* mono_unity_class_get_generic_definition(MonoClass* klass);
 MonoClass* mono_unity_class_inflate_generic_class(MonoClass *gklass, MonoGenericContext *context);
@@ -74,7 +74,7 @@ MonoBoolean mono_unity_class_is_class_type(MonoClass* klass);
 gboolean mono_class_is_generic(MonoClass *klass);
 gboolean mono_class_is_blittable(MonoClass *klass);
 
-//method 
+//method
 MonoMethod* mono_unity_method_get_generic_definition(MonoMethod* method);
 MonoReflectionMethod* mono_unity_method_get_object(MonoMethod *method);
 MonoMethod* mono_unity_method_alloc0(MonoClass* klass);
@@ -155,6 +155,8 @@ void* mono_unity_get_field_address(MonoObject *obj, MonoVTable *vt, MonoClassFie
 gboolean mono_unity_thread_state_init_from_handle(MonoThreadUnwindState *tctx, MonoThreadInfo *info);
 void mono_unity_stackframe_set_method(MonoStackFrame *sf, MonoMethod *method);
 MonoType* mono_unity_reflection_type_get_type(MonoReflectionType *type);
+void mono_unity_set_data_dir(const char* dir);
+char* mono_unity_get_data_dir();
 gpointer mono_unity_alloc(gsize size);
 
 #endif
