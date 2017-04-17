@@ -1,4 +1,4 @@
-#ifndef __UNITY_MONO_UTILS_H
+﻿#ifndef __UNITY_MONO_UTILS_H
 #define __UNITY_MONO_UTILS_H
 
 #include <glib.h>
@@ -154,5 +154,6 @@ void* mono_unity_get_field_address(MonoObject *obj, MonoVTable *vt, MonoClassFie
 gboolean mono_unity_thread_state_init_from_handle(MonoThreadUnwindState *tctx, MonoThreadInfo *info);
 void mono_unity_stackframe_set_method(MonoStackFrame *sf, MonoMethod *method);
 MonoType* mono_unity_reflection_type_get_type(MonoReflectionType *type);
+gpointer mono_unity_alloc(gsize size);
 
 #endif

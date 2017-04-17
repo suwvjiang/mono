@@ -1,4 +1,4 @@
-/*
+﻿/*
 * gmisc.c: Misc functions with no place to go (right now)
 *
 * Author:
@@ -25,11 +25,10 @@
 * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+﻿#ifdef PLATFORM_UNITY
 
 #include <stdlib.h>
 #include <glib.h>
-
-#if defined(PLATFORM_UNITY)
 
 const gchar *
 g_getenv(const gchar *variable)
@@ -67,9 +66,17 @@ g_get_user_name(void)
 {
 }
 
+#include "Path-c-api.h"
+
+static const char *tmp_dir;
+
 const gchar *
 g_get_tmp_dir(void)
 {
+    if (tmp_dir == NULL)
+        tmp_dir = il2cpp_os_Path_GetTempPath();
+
+    return tmp_dir;
 }
 
 #endif // PLATFORM_UNITY

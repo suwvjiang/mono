@@ -1,4 +1,4 @@
-#include <config.h>
+﻿#include <config.h>
 #include <mono/utils/mono-publib.h>
 #include <mono/metadata/unity-utils.h>
 #include <stdio.h>
@@ -1002,4 +1002,10 @@ MONO_API void
 mono_unity_install_memory_callbacks (MonoAllocatorVTable* callbacks)
 {
 	mono_set_allocator_vtable (callbacks);
+}
+
+MONO_API gpointer
+mono_unity_alloc(gsize size)
+{
+    return g_malloc(size);
 }
