@@ -38,7 +38,7 @@ const gchar *
 g_get_tmp_dir(void)
 {
     if (tmp_dir == NULL)
-        tmp_dir = il2cpp_os_Path_GetTempPath();
+        tmp_dir = UnityPalGetTempPath();
 
     return tmp_dir;
 }
