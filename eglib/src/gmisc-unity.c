@@ -30,42 +30,6 @@
 #include <stdlib.h>
 #include <glib.h>
 
-const gchar *
-g_getenv(const gchar *variable)
-{
-
-}
-
-gboolean
-g_setenv(const gchar *variable, const gchar *value, gboolean overwrite)
-{
-}
-
-void
-g_unsetenv(const gchar *variable)
-{
-}
-
-gchar*
-g_win32_getlocale(void)
-{
-}
-
-gboolean
-g_path_is_absolute(const char *filename)
-{
-}
-
-const gchar *
-g_get_home_dir(void)
-{
-}
-
-const char *
-g_get_user_name(void)
-{
-}
-
 #include "Path-c-api.h"
 
 static const char *tmp_dir;
