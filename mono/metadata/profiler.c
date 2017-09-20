@@ -64,6 +64,7 @@ struct _ProfilerDesc {
 	MonoProfileMethodFunc   method_end_invoke;
 	MonoProfileMethodResult man_unman_transition;
 	MonoProfileAllocFunc    allocation_cb;
+	MonoProfileFileIOFunc   fileio_cb;
 	MonoProfileMonitorFunc  monitor_event_cb;
 	MonoProfileStatFunc     statistical_cb;
 	MonoProfileStatCallChainFunc statistical_call_chain_cb;
@@ -80,6 +81,9 @@ struct _ProfilerDesc {
 
 	MonoProfileThreadFunc   thread_start;
 	MonoProfileThreadFunc   thread_end;
+
+	MonoProfileThreadFunc   thread_fast_attach;
+	MonoProfileThreadFunc   thread_fast_detach;
 
 	MonoProfileCoverageFilterFunc coverage_filter_cb;
 
@@ -237,6 +241,15 @@ mono_profiler_install_thread (MonoProfileThreadFunc start, MonoProfileThreadFunc
 	prof_list->thread_end = end;
 }
 
+void
+mono_profiler_install_thread_fast_attach_detach (MonoProfileThreadFunc fast_attach, MonoProfileThreadFunc fast_detach)
+{
+	if (!prof_list)
+		return;
+	prof_list->thread_fast_attach = fast_attach;
+	prof_list->thread_fast_detach = fast_detach;
+}
+
 void 
 mono_profiler_install_transition (MonoProfileMethodResult callback)
 {
@@ -251,6 +264,14 @@ mono_profiler_install_allocation (MonoProfileAllocFunc callback)
 	if (!prof_list)
 		return;
 	prof_list->allocation_cb = callback;
+}
+
+void
+mono_profiler_install_fileio (MonoProfileFileIOFunc callback)
+{
+	if (!prof_list)
+		return;
+	prof_list->fileio_cb = callback;
 }
 
 void
@@ -473,6 +494,16 @@ mono_profiler_monitor_event      (MonoObject *obj, MonoProfilerMonitorEvent even
 }
 
 void
+mono_profiler_fileio (int kind, int count)
+{
+	ProfilerDesc *prof;
+	for (prof = prof_list; prof; prof = prof->next) {
+		if ((prof->events & MONO_PROFILE_FILEIO) && prof->fileio_cb)
+			prof->fileio_cb (prof->profiler, kind, count);
+    }
+}
+
+void
 mono_profiler_stat_hit (guchar *ip, void *context)
 {
 	ProfilerDesc *prof;
@@ -539,6 +570,26 @@ mono_profiler_thread_end (gsize tid)
 	for (prof = prof_list; prof; prof = prof->next) {
 		if ((prof->events & MONO_PROFILE_THREADS) && prof->thread_end)
 			prof->thread_end (prof->profiler, tid);
+	}
+}
+
+void
+mono_profiler_thread_fast_attach (gsize tid)
+{
+	ProfilerDesc *prof;
+	for (prof = prof_list; prof; prof = prof->next) {
+		if ((prof->events & MONO_PROFILE_THREADS) && prof->thread_fast_attach)
+			prof->thread_fast_attach (prof->profiler, tid);
+	}
+}
+
+void
+mono_profiler_thread_fast_detach(gsize tid)
+{
+	ProfilerDesc *prof;
+	for (prof = prof_list; prof; prof = prof->next) {
+		if ((prof->events & MONO_PROFILE_THREADS) && prof->thread_fast_detach)
+			prof->thread_fast_detach (prof->profiler, tid);
 	}
 }
 
@@ -1090,6 +1141,7 @@ timeval_elapsed (MonoGLibTimer *t)
 typedef struct _AllocInfo AllocInfo;
 typedef struct _CallerInfo CallerInfo;
 typedef struct _LastCallerInfo LastCallerInfo;
+typedef struct _FileIOInfo FileIOInfo;
 
 struct _MonoProfiler {
 	GHashTable *methods;
@@ -1116,6 +1168,7 @@ typedef struct {
 	double total;
 	AllocInfo *alloc_info;
 	CallerInfo *caller_info;
+	FileIOInfo *fileio_info;
 } MethodProfile;
 
 typedef struct _MethodCallProfile MethodCallProfile;
@@ -1124,6 +1177,12 @@ struct _MethodCallProfile {
 	MethodCallProfile *next;
 	MONO_TIMER_TYPE timer;
 	MonoMethod *method;
+};
+
+struct _FileIOInfo {
+	guint64 count;
+	guint64 bytes;
+	gboolean is_read;
 };
 
 struct _AllocInfo {
